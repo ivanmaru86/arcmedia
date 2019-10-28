@@ -1,0 +1,37 @@
+#block-arcmedianewsletter {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    min-width: 350px;
+    background: ghostwhite;
+    padding: 20px;
+    margin: 0px;
+}
+
+#block-arcmedianewsletter h2 {
+    text-align: center;
+    color: black;
+}
+
+#block-arcmedianewsletter .content {
+    color: black;
+}
+
+#block-arcmedianewsletter .button {
+    width: 100%;
+    margin: auto;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+    font-size: 15px;
+}
+
+.close-btn{
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.close-btn:hover {
+    cursor: pointer;
+}

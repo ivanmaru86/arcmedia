@@ -1,0 +1,24 @@
+<table>
+    <thead>
+        <td><strong>User</strong></td>
+        <td><strong>Email</strong></td>
+        <td><strong>Date</strong></td>
+        <td><strong>General</strong></td>
+        <td><strong>Health</strong></td>
+        <td><strong>Sports</strong></td>
+        <td><strong>Garden</strong></td>
+        <td><strong>Ip</strong></td>
+    </thead>
+{% for newsletter in newsletters %}
+    <tr>
+        <td>{{ newsletter.username }}</td>
+        <td>{{ newsletter.email }}</td>
+        <td>{{ newsletter.date }}</td>
+        <td>{{ newsletter.newsletter_general }}</td>
+        <td>{{ newsletter.newsletter_health }}</td>
+        <td>{{ newsletter.newsletter_sports }}</td>
+        <td>{{ newsletter.newsletter_garden }}</td>
+        <td>{{ newsletter.ip }}</td>
+    </tr>
+{% endfor %}
+</table>

@@ -1,0 +1,9 @@
+arcmedianewsletter:
+  version: VERSION
+  css: 
+    base:
+      css/arcmedianewsletter.css: {}
+  js:
+    js/arcmedianewsletter.js: {}
+  dependencies:
+    - core/jquery

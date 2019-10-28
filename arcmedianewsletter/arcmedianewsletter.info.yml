@@ -1,0 +1,7 @@
+name: 'arcmedianewsletter'
+type: module
+description: 'A simple newsletter module'
+core: 8.x
+package: 'Custom'
+dependencies:
+  - block

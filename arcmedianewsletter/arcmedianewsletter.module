@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * Contains arcmedianewsletter.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function arcmedianewsletter_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the arcmedianewsletter module.
+    case 'help.page.arcmedianewsletter':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('A simple newsletter module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function arcmedianewsletter_theme($existing, $type, $theme, $path) {
+  return [
+    'arcmedianewsletter' => [
+      'variables' => [
+        'form' => [],
+      ],
+    ],
+    'subscriptionlist' => [
+      'variables' => [
+        'newsletters' => [],
+      ]
+    ]
+  ];
+}

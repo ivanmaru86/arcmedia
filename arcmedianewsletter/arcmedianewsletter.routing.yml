@@ -1,0 +1,16 @@
+arcmedianewsletter.arc_media_newsletter_controller_subscriptions_listing:
+  path: '/subcriptions'
+  defaults:
+    _controller: '\Drupal\arcmedianewsletter\Controller\ArcMediaNewsletterController::showSubscriptions'
+    _title: 'Subscriptions Listing'
+  requirements:
+    _permission: 'access content'
+    _role: 'administrator'
+arcmedianewsletter.newsletter_form:
+  path: '/form/newsletter'
+  defaults:
+    _form: '\Drupal\arcmedianewsletter\Form\ArcMediaNewsLetterForm'
+    _title: 'ArcmediaNewsLetterForm'
+  requirements:
+    _permission: 'access content'
+    _access: 'TRUE'

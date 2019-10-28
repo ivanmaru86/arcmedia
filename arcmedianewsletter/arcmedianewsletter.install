@@ -1,0 +1,115 @@
+<?php
+
+/**
+ * @file
+ * Contains install and update functions for arcmedianewsletter module.
+ */
+
+
+/**
+ * Implements hook_install().
+ */
+function arcmedianewsletter_install() {
+  $newsletters = [
+    [
+        'username' => 'John',
+        'email' => 'john@example.com',
+        'date' => '2019-02-23',
+        'newsletter_general' => 1,
+        'newsletter_health' => 0,
+        'newsletter_sports' => 0,
+        'newsletter_garden' => 0,
+        'ip' => '192.87.1.45',
+    ],
+    [
+        'username' => 'John',
+        'email' => 'john@example.com',
+        'date' => '2019-02-23',
+        'newsletter_general' => 1,
+        'newsletter_health' => 0,
+        'newsletter_sports' => 0,
+        'newsletter_garden' => 0,
+        'ip' => '192.87.1.45',
+    ],
+    [
+        'username' => 'John',
+        'email' => 'john@example.com',
+        'date' => '2019-02-23',
+        'newsletter_general' => 1,
+        'newsletter_health' => 0,
+        'newsletter_sports' => 0,
+        'newsletter_garden' => 0,
+        'ip' => '192.87.1.45',
+    ],
+    [
+        'username' => 'John',
+        'email' => 'john@example.com',
+        'date' => '2019-02-23',
+        'newsletter_general' => 1,
+        'newsletter_health' => 0,
+        'newsletter_sports' => 0,
+        'newsletter_garden' => 0,
+        'ip' => '192.87.1.45',
+    ],
+  ];
+  $conection = \Drupal::database();
+
+  foreach ($newsletters as $newsletter) {
+      $conection->insert('arcmedianewsletters')->fields($newsletter)->execute();
+  }
+}
+
+/**
+ * Implements hook_schema().
+ */
+function arcmedianewsletter_schema() {
+  $schema['arcmedianewsletters'] = [
+      'fields' => [
+          'nwid' => [
+              'type' => 'serial',
+              'not null' => TRUE,
+          ],
+          'username' => [
+              'type' => 'text',
+              'length' => 255,
+              'not null' => TRUE,
+          ],
+          'email' => [
+            'type' => 'text',
+            'length' => 255,
+            'not null' => TRUE,
+          ],
+          'date' => [
+              'mysql_type' => 'datetime',
+              'type' => 'varchar',
+          ],
+          'newsletter_general' => [
+              'type' => 'int',
+              'unsigned' => TRUE,
+              'default' => 0,
+          ],
+          'newsletter_health' => [
+            'type' => 'int',
+            'unsigned' => TRUE,
+            'default' => 0,
+        ],
+        'newsletter_sports' => [
+            'type' => 'int',
+            'unsigned' => TRUE,
+            'default' => 0,
+        ],
+        'newsletter_garden' => [
+            'type' => 'int',
+            'unsigned' => TRUE,
+            'default' => 0,
+        ],
+          'ip' => [
+              'type' => 'text',
+              'length' => 255,
+              'not null' => TRUE,
+          ]
+      ],
+    'primary key' => ['nwid'],
+  ];
+  return $schema;
+}
