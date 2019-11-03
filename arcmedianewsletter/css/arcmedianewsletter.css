@@ -35,3 +35,9 @@
 .close-btn:hover {
     cursor: pointer;
 }
+
+.error-message {
+    background-color: #ff7a7a;
+    border-radius: 5px;
+    text-align: center;
+}

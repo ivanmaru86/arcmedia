@@ -7,6 +7,11 @@
             $('#block-arcmedianewsletter').hide();
             sessionStorage.setItem('newsletter_block', 'hidden');
         });
+
+        $.fn.hideBlock = function() {
+            $('#block-arcmedianewsletter').hide();
+            sessionStorage.setItem('newsletter_block', 'hidden');
+        }
     });
 
   })(jQuery);

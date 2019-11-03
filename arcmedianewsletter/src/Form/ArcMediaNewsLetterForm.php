@@ -4,6 +4,10 @@ namespace Drupal\arcmedianewsletter\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\HtmlCommand;
+use Drupal\Core\Ajax\InvokeCommand;
+use Drupal\Core\Ajax\CssCommand;
 
 /**
  * Class ArcMediaNewsLetterForm.
@@ -21,8 +25,9 @@ class ArcMediaNewsLetterForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form['#markup'] = '<h2>Arcmedia Newsletter</h2>';
-    $form['#message'] = '<div id="message"></div>';
+    $markup = '<h2>Arcmedia Newsletter</h2>';
+    $markup .= '<div id="message"></div>';
+    $form['#markup'] = $markup;
     $form['#action'] = '/form/newsletter';
     $newsletters = [
       'General' => 'general',
@@ -73,7 +78,6 @@ class ArcMediaNewsLetterForm extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    parent::validateForm($form, $form_state);
   }
 
   /**
@@ -89,14 +93,19 @@ class ArcMediaNewsLetterForm extends FormBase {
     $user = \Drupal::currentUser();
     $user_name = '';
     $user_email =  '';
+    $response = new AjaxResponse();
     if(\Drupal::currentUser()->isAnonymous()){
       $user_name = $form_state->getValue('username');
       $user_email = $form_state->getValue('email');
-      if(strlen($user_name == 0)){
-        $form_state->setErrorByName('username', $this->t('The field username cannot be empty.'));
+      if(empty($user_name)){
+        $response->addCommand(new HtmlCommand('#message', 'The field username cannot be empty.'));
+        $response->addCommand(new InvokeCommand('#message', 'addClass',['error-message']));
+        return $response;
       }
       if(!\Drupal::service('email.validator')->isValid($user_email)) {
-        $form_state->setErrorByName('email', $this->t('The email is not a valid email address'));
+        $response->addCommand(new HtmlCommand('#message', 'The email is not a valid email address'));
+        $response->addCommand(new InvokeCommand('#message', 'addClass',['error-message']));
+        return $response;
       }
     }
     else {
@@ -119,7 +128,10 @@ class ArcMediaNewsLetterForm extends FormBase {
         'newsletter_garden' => $form_state->getValue('newsletter_garden'),
       ]
     )
-    ->execute(); 
+    ->execute();
+
+    $response->addCommand(new InvokeCommand('#block-arcmedianewsletter', 'hideBlock'));
+    return $response;
   }
 
 }
