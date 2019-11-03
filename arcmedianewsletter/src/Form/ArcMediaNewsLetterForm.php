@@ -23,6 +23,7 @@ class ArcMediaNewsLetterForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form['#markup'] = '<h2>Arcmedia Newsletter</h2>';
     $form['#message'] = '<div id="message"></div>';
+    $form['#action'] = '/form/newsletter';
     $newsletters = [
       'General' => 'general',
       'Health and Beauty' => 'health',
@@ -56,7 +57,6 @@ class ArcMediaNewsLetterForm extends FormBase {
         '#placeholder' => 'Enter your email',
       ];
     }
-    $form['#action'] = '/form/newsletter';
     $form['submit'] = [
       '#type' => 'submit',
       '#class' => 'button-subscribe',
@@ -80,7 +80,6 @@ class ArcMediaNewsLetterForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    \Drupal::messenger()->addMessage('Thanks for subscribing!!');
   }
 
   /**

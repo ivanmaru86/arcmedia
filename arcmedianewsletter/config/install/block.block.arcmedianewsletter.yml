@@ -1,13 +1,14 @@
 uuid: 30e06857-9fba-4a69-bf60-12ecf07f8c38
-langcode: en
+langcode: es
 status: true
 dependencies:
   module:
     - arcmedianewsletter
-    - node
     - user
   theme:
     - bartik
+_core:
+  default_config_hash: c_cGSiaWZKQyPLp0b6AotiDfVLXtQJkpm5TFrgf7PIA
 id: arcmedianewsletter
 theme: bartik
 region: content
@@ -20,13 +21,6 @@ settings:
   provider: arcmedianewsletter
   label_display: '0'
 visibility:
-  node_type:
-    id: node_type
-    bundles:
-      page: page
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
   user_role:
     id: user_role
     roles:
